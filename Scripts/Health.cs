@@ -6,10 +6,10 @@ public class Health : MonoBehaviour
     [SerializeField] private int _count;
     [SerializeField] private int _max;
 
+    public event Action Changed;
+
     public int Count => _count;
     public int Max => _max;
-
-    public event Action Changed;
 
     public void TakeDamage(int damage)
     {
@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         Changed?.Invoke();
     }
 
-    public void Heal(int healthAmount)
+    public void TakeHeal(int healthAmount)
     {
         if (healthAmount < 0)
             return;

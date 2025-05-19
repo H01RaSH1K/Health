@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SmoothHealthBar : HealthBar
@@ -16,24 +17,25 @@ public class SmoothHealthBar : HealthBar
 
     private IEnumerator SmoothlyFill()
     {
-        while(enabled)
+        float distance;
+        float move;
+        float targetFill;
+
+        do
         {
-            float targetFill = GetNormalizedHealth();
-            float delta = targetFill - _slider.value;
-            float distance = Mathf.Abs(delta);
+            targetFill = GetNormalizedHealth();
+            float delta = targetFill - _Slider.value;
+            distance = Mathf.Abs(delta);
             float direction = Mathf.Sign(delta);
 
-            float move = _fillSpeed * Time.deltaTime;
+            move = _fillSpeed * Time.deltaTime;
 
-            if (distance < _fillThreshold || move > distance)
-            {
-                _slider.value = targetFill;
-                _fillingCoroutine = null;
-                yield break;
-            }
-
-            _slider.value = Mathf.Clamp(_slider.value + move * direction, _slider.minValue, _slider.maxValue);
+            _Slider.value = Mathf.Clamp(_Slider.value + move * direction, _Slider.minValue, _Slider.maxValue);
             yield return null;
-        }
+        } while (distance > _fillThreshold && move < distance);
+
+        _Slider.value = targetFill;
+        _fillingCoroutine = null;
+        yield break;
     }
 }

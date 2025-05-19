@@ -5,6 +5,6 @@ public class Damager : HealthAffector
 {
     protected override void OnClick()
     {
-        _health.TakeDamage(_healthAmount);
+        _Health.TakeDamage(_HealthAmount);
     }
 }

@@ -4,15 +4,15 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public abstract class HealthBar : HealthView
 {
-    protected Slider _slider;
+    protected Slider _Slider;
 
     private void Awake()
     {
-        _slider = GetComponent<Slider>();
+        _Slider = GetComponent<Slider>();
     }
 
     protected float GetNormalizedHealth()
     {
-        return (float)_health.Count / _health.Max;
+        return (float)_Health.Count / _Health.Max;
     }
 }
