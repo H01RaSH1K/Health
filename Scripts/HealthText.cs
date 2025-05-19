@@ -13,6 +13,6 @@ public class HealthText : HealthView
 
     protected override void OnHealthChanged()
     {
-        _text.text = $"{_Health.Count}/{_Health.Max}";
+        _text.text = $"{Health.Count}/{Health.Max}";
     }
 }

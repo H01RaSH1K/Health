@@ -4,8 +4,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public abstract class HealthAffector : MonoBehaviour
 {
-    [SerializeField] protected Health _Health;
-    [SerializeField] protected int _HealthAmount = 25;
+    [SerializeField] protected Health Health;
+    [SerializeField] protected int HealthAmount = 25;
 
     private Button _button;
 
