@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class HealthBar : HealthView
+public abstract class HealthBar : HealthView
 {
-    private Slider _slider;
+    protected Slider _slider;
 
     private void Awake()
     {
         _slider = GetComponent<Slider>();
     }
 
-    protected override void OnHealthChanged()
+    protected float GetNormalizedHealth()
     {
-        _slider.value = GetNormalizedHealth();
+        return (float)_health.Count / _health.Max;
     }
 }

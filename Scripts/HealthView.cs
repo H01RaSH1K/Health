@@ -15,10 +15,5 @@ public abstract class HealthView : MonoBehaviour
         _health.Changed -= OnHealthChanged;
     }
 
-    protected float GetNormalizedHealth()
-    {
-        return (float)_health.Count / _health.Max;
-    }
-
     protected abstract void OnHealthChanged();
 }
